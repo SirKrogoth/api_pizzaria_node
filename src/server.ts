@@ -6,7 +6,7 @@ import cors from 'cors';
 const app = express();
 const port = 3333;
 
-app.use(express.json())
+app.use(express.json());
 app.use(cors());
 app.use(router);
 
@@ -22,6 +22,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         message: 'Internal server error.'
     });
 });
-
 
 app.listen(port, () => console.log("Servidor rodando na porta " + port + "."));
