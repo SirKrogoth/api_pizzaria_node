@@ -9,6 +9,12 @@ import { CreateProductController } from './controllers/product/CreateProductCont
 import { ListByCategoryController } from './controllers/product/ListByCategoryController';
 import { CreateOrderController } from './controllers/order/CreateOrderController';
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
+import { AddItemController } from './controllers/order/AddItemController';
+import { RemoveItemController } from './controllers/order/RemoveItemController';
+import { SendOrderController } from './controllers/order/SendOrderController';
+import { ListOpenedOrdersController } from './controllers/order/ListOpenedOrdersController';
+import { ListItensByOrdemController } from './controllers/order/ListItensByOrdemController';
+import { FinishOrderController } from './controllers/order/FinishOrderController';
 
 import multer from 'multer';
 import uploadConfig from './config/multer';
@@ -33,6 +39,14 @@ router.get('/category/products', isAuthenticaded, new ListByCategoryController()
 //Rotas de orders
 router.post('/order', isAuthenticaded, new CreateOrderController().handle);
 router.delete('/order', isAuthenticaded, new RemoveOrderController().handle);
+router.post('/order/add', isAuthenticaded, new AddItemController().handle);
+router.delete('/order/remove', isAuthenticaded, new RemoveItemController().handle);
+router.put('/order/finishOrder', isAuthenticaded, new FinishOrderController().handle);
+router.put('/order/send', isAuthenticaded, new SendOrderController().handle);
+router.get('/order/listOrders', isAuthenticaded, new ListOpenedOrdersController().handle);
+router.get('/order/listItensByOrder', isAuthenticaded, new ListItensByOrdemController().handle);
+
+
 
 
 export { router };
