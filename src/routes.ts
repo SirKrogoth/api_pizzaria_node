@@ -6,6 +6,10 @@ import { isAuthenticaded } from './middlewares/isAuthenticated';
 import { CreateCategoryController } from './controllers/category/CreateCategoryController';
 import { ListCategoryController } from './controllers/category/ListCategoryController';
 import { CreateProductController } from './controllers/product/CreateProductController';
+import { ListByCategoryController } from './controllers/product/ListByCategoryController';
+import { CreateOrderController } from './controllers/order/CreateOrderController';
+import { RemoveOrderController } from './controllers/order/RemoveOrderController';
+
 import multer from 'multer';
 import uploadConfig from './config/multer';
 
@@ -24,5 +28,11 @@ router.get('/categoryList', isAuthenticaded, new ListCategoryController().handle
 
 //Rotas de produtos
 router.post('/product', isAuthenticaded, upload.single('file'), new CreateProductController().handle);
+router.get('/category/products', isAuthenticaded, new ListByCategoryController().handle);
+
+//Rotas de orders
+router.post('/order', isAuthenticaded, new CreateOrderController().handle);
+router.delete('/order', isAuthenticaded, new RemoveOrderController().handle);
+
 
 export { router };
