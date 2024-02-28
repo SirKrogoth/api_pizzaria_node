@@ -15,6 +15,7 @@ import { SendOrderController } from './controllers/order/SendOrderController';
 import { ListOpenedOrdersController } from './controllers/order/ListOpenedOrdersController';
 import { ListItensByOrdemController } from './controllers/order/ListItensByOrdemController';
 import { FinishOrderController } from './controllers/order/FinishOrderController';
+import { DetailOrderController } from './controllers/order/DetailOrderController';
 
 import multer from 'multer';
 import uploadConfig from './config/multer';
@@ -45,6 +46,7 @@ router.put('/order/finishOrder', isAuthenticaded, new FinishOrderController().ha
 router.put('/order/send', isAuthenticaded, new SendOrderController().handle);
 router.get('/order/listOrders', isAuthenticaded, new ListOpenedOrdersController().handle);
 router.get('/order/listItensByOrder', isAuthenticaded, new ListItensByOrdemController().handle);
+router.get('/order/detail', isAuthenticaded, new DetailOrderController().handle);
 
 
 
